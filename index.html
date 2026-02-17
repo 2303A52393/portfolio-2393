@@ -173,8 +173,8 @@
 
                 <div class="relative flex justify-center mt-6 mb-10">
                     <div class="relative w-48 h-48 md:w-64 md:h-64 profile-blob bg-accent/20 border-2 border-accent/40 animate-float shadow-2xl shadow-accent/20 overflow-hidden">
-                        <!-- User Image Added Below -->
-                        <img src="likki.jpg" alt="Pendli Likitha" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Pendli+Likitha&background=c084fc&color=fff&size=512'">
+                        <img src="likki.jpg" alt="Pendli Likitha" class="w-full h-full object-cover">
+
                     </div>
                 </div>
 
@@ -228,8 +228,8 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Programming -->
-                    <div class="glass-card p-8 rounded-[2rem]">
+                    <!-- Programming Languages -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
                         <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
                             <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
                                 <i class="fas fa-code"></i>
@@ -242,8 +242,8 @@
                         </div>
                     </div>
 
-                    <!-- AI & ML -->
-                    <div class="glass-card p-8 rounded-[2rem]">
+                    <!-- ML & DL -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
                         <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
                             <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
                                 <i class="fas fa-brain"></i>
@@ -255,11 +255,28 @@
                             <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">TensorFlow</span>
                             <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Keras</span>
                             <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">LSTM</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Deep Learning</span>
                         </div>
                     </div>
 
-                    <!-- Web Dev -->
-                    <div class="glass-card p-8 rounded-[2rem]">
+                    <!-- Data Analysis -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
+                                <i class="fas fa-chart-line"></i>
+                            </span>
+                            Data Analytics
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">NumPy</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Pandas</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Matplotlib</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Seaborn</span>
+                        </div>
+                    </div>
+
+                    <!-- Web Development -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
                         <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
                             <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
                                 <i class="fas fa-globe"></i>
@@ -270,6 +287,37 @@
                             <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">HTML5</span>
                             <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">CSS3</span>
                             <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">React</span>
+                        </div>
+                    </div>
+
+                    <!-- Databases & Tools -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
+                                <i class="fas fa-tools"></i>
+                            </span>
+                            Tools & DB
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">SQL</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Git</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">GitHub</span>
+                        </div>
+                    </div>
+
+                    <!-- CS Fundamentals -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
+                                <i class="fas fa-laptop-code"></i>
+                            </span>
+                            Fundamentals
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] text-textMuted border border-white/10">DSA</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] text-textMuted border border-white/10">DBMS</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] text-textMuted border border-white/10">Networks</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] text-textMuted border border-white/10">OS</span>
                         </div>
                     </div>
                 </div>
@@ -284,7 +332,9 @@
                         <span id="heading-internships" class="text-gradient"></span><span class="cursor">|</span>
                     </h2>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center" id="internships-grid"></div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center" id="internships-grid">
+                    <!-- Injected by JavaScript -->
+                </div>
             </div>
         </section>
 
@@ -296,7 +346,9 @@
                         <span id="heading-certifications" class="text-gradient"></span><span class="cursor">|</span>
                     </h2>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8" id="certifications-grid"></div>
+                <div class="grid md:grid-cols-2 gap-8" id="certifications-grid">
+                    <!-- Injected by JavaScript -->
+                </div>
             </div>
         </section>
 
@@ -311,7 +363,9 @@
                         VIEW ALL GITHUB <i class="fas fa-external-link-alt text-xs"></i>
                     </a>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid"></div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                    <!-- Injected by JavaScript -->
+                </div>
             </div>
         </section>
 
@@ -347,6 +401,7 @@
     </main>
 
     <footer class="py-12 text-center border-t border-white/5">
+        <!-- Copyright text removed -->
     </footer>
 
     <script>
@@ -370,6 +425,8 @@
             type();
         }
 
+        // --- DYNAMIC DATA ---
+        
         const internshipData = [
             {
                 title: "AI & ML Virtual Internship",
@@ -404,11 +461,13 @@
             { title: 'Teenage Phone Addiction', link: 'https://github.com/2303A52393/PROJECT-Teen-age-phone-addiction', tags: ['Analysis', 'Behavioral'], icon: '<i class="fas fa-mobile-alt"></i>' }
         ];
 
+        // --- RENDERING FUNCTIONS ---
+
         function renderInternships() {
             const grid = document.getElementById('internships-grid');
             if(!grid) return;
             grid.innerHTML = internshipData.map(item => `
-                <div class="glass-card p-10 rounded-[2.5rem] group">
+                <div class="glass-card p-10 rounded-[2.5rem] group hover:border-accent/40">
                     <div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl mb-8 group-hover:scale-110 transition-transform">
                         <i class="fas ${item.icon}"></i>
                     </div>
@@ -423,7 +482,7 @@
             const grid = document.getElementById('certifications-grid');
             if(!grid) return;
             grid.innerHTML = certificationData.map(item => `
-                <div class="glass-card p-10 rounded-[2.5rem] group">
+                <div class="glass-card p-10 rounded-[2.5rem] group hover:border-accent/40">
                     <div class="flex justify-between items-start mb-8">
                         <div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl group-hover:scale-110 transition-transform">
                             <i class="fas ${item.icon}"></i>
@@ -455,6 +514,8 @@
             `).join('');
         }
 
+        // --- INITIALIZATION ---
+
         document.addEventListener('DOMContentLoaded', () => {
             createTypingEffect('dynamic-greeting', ["Hi There!"], 2000);
             createTypingEffect('dynamic-name', ["I'm Pendli Likitha"], 5000);
@@ -477,5 +538,3 @@
     </script>
 </body>
 </html>
-
-
