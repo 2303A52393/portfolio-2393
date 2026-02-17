@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendli Likitha | AI & ML Engineer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a9cdbedf57.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgPrimary: '#020617',
+                        bgSecondary: '#0f172a',
+                        accent: '#c084fc',
+                        accentHover: '#a855f7',
+                        textMain: '#f8fafc',
+                        textMuted: '#94a3b8',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c084fc; }
+
+        body {
+            background: radial-gradient(circle at top right, #1e1b4b, #020617 40%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            filter: blur(100px);
+            animation: mesh 20s ease infinite;
+        }
+
+        @keyframes mesh {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(192, 132, 252, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -20px rgba(192, 132, 252, 0.3);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #c084fc;
+            margin-left: 4px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #f8fafc, #c084fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .profile-blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            overflow: hidden;
+            animation: blob-anim 8s ease-in-out infinite;
+        }
+
+        @keyframes blob-anim {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+        }
+
+        input, textarea {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #c084fc !important;
+            outline: none;
+            background: rgba(255, 255, 255, 0.07) !important;
+        }
+    </style>
+</head>
+<body class="bg-bgPrimary text-textMain antialiased font-sans">
+    <div class="bg-mesh"></div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="font-heading text-xl md:text-2xl font-black uppercase tracking-[0.15em] cursor-pointer group flex items-center gap-2" onclick="window.scrollTo(0,0)">
+                <span class="text-accent group-hover:text-white transition-all duration-300 transform group-hover:scale-110">Portfolio</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Home</a>
+                <a href="#about" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">About</a>
+                <a href="#skills" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Skills</a>
+                <a href="#internships" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Internships</a>
+                <a href="#certifications" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Certificates</a>
+                <a href="#projects-section" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Projects</a>
+                <a href="#contact" class="px-5 py-2.5 bg-accent text-bgPrimary rounded-full font-bold text-xs uppercase tracking-wider hover:scale-105 transition-all">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center relative px-6 pt-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full flex flex-col items-center text-center">
+                <div class="max-w-4xl">
+                    <div class="min-h-[140px] md:min-h-[180px]">
+                        <h1 class="font-heading text-4xl md:text-7xl font-extrabold leading-[1.1]">
+                            <span id="dynamic-greeting" class="text-white"></span><br>
+                            <span id="dynamic-name" class="text-gradient leading-relaxed"></span><span class="cursor">|</span>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="relative flex justify-center mt-6 mb-10">
+                    <div class="relative w-48 h-48 md:w-64 md:h-64 profile-blob bg-accent/20 border-2 border-accent/40 animate-float shadow-2xl shadow-accent/20 overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Pendli+Likitha&background=c084fc&color=fff&size=512" alt="Pendli Likitha" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="max-w-2xl mb-12">
+                    <p class="text-textMuted text-lg md:text-xl leading-relaxed font-light">
+                        A <span class="text-white font-medium">Computer Science student</span> specializing in Artificial Intelligence and Machine Learning, with interests in <span class="text-white font-medium">Machine Learning, Deep Learning, and Full-Stack Web Development</span>.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <a href="#about" class="group relative px-10 py-4 bg-white/5 border border-accent/30 rounded-2xl font-bold text-white overflow-hidden transition-all hover:border-accent">
+                        <span class="relative z-10 flex items-center gap-2">
+                            Explore Me <i class="fas fa-arrow-right text-accent group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                        <div class="absolute inset-0 bg-accent/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a>
+
+                    <div class="flex items-center gap-6">
+                        <a href="https://github.com/2303A52393" target="_blank" class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl text-textMuted hover:text-accent hover:border-accent/40 hover:-translate-y-1 transition-all duration-300" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/likitha-pendli-a87583287" target="_blank" class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl text-textMuted hover:text-accent hover:border-accent/40 hover:-translate-y-1 transition-all duration-300" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 px-6 border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="font-heading text-4xl font-bold uppercase tracking-tight mb-12">
+                        <span id="heading-about" class="text-gradient"></span><span class="cursor">|</span>
+                    </h2>
+                    <p class="text-textMuted leading-relaxed text-lg md:text-xl font-light">
+                        I am a <span class="text-white font-medium">third-year Computer Science student</span> specializing in Artificial Intelligence and Machine Learning. I have experience in developing <span class="text-white font-medium">scalable and responsive web applications</span> and enjoy tackling complex problems through innovative and data-driven solutions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills" class="py-32 px-6 bg-white/5 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 space-y-4">
+                    <h2 class="font-heading text-4xl font-bold uppercase tracking-tight">
+                        <span id="heading-skills" class="text-gradient"></span><span class="cursor">|</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Programming Languages -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
+                                <i class="fas fa-code"></i>
+                            </span>
+                            Programming
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Python</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Java</span>
+                        </div>
+                    </div>
+
+                    <!-- ML & DL -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
+                                <i class="fas fa-brain"></i>
+                            </span>
+                            AI & Deep Learning
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Scikit-learn</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">TensorFlow</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Keras</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">LSTM</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Deep Learning</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Analysis -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
+                                <i class="fas fa-chart-line"></i>
+                            </span>
+                            Data Analytics
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">NumPy</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Pandas</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Matplotlib</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Seaborn</span>
+                        </div>
+                    </div>
+
+                    <!-- Web Development -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
+                                <i class="fas fa-globe"></i>
+                            </span>
+                            Web Development
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">HTML5</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">CSS3</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">React</span>
+                        </div>
+                    </div>
+
+                    <!-- Databases & Tools -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
+                                <i class="fas fa-tools"></i>
+                            </span>
+                            Tools & DB
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">SQL</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">Git</span>
+                            <span class="px-4 py-2 bg-white/5 rounded-xl text-xs text-textMuted border border-white/10">GitHub</span>
+                        </div>
+                    </div>
+
+                    <!-- CS Fundamentals -->
+                    <div class="glass-card p-8 rounded-[2rem] relative overflow-hidden group">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                            <span class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-lg">
+                                <i class="fas fa-laptop-code"></i>
+                            </span>
+                            Fundamentals
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] text-textMuted border border-white/10">DSA</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] text-textMuted border border-white/10">DBMS</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] text-textMuted border border-white/10">Networks</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] text-textMuted border border-white/10">OS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Internships Section -->
+        <section id="internships" class="py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-4xl font-bold uppercase tracking-tight">
+                        <span id="heading-internships" class="text-gradient"></span><span class="cursor">|</span>
+                    </h2>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center" id="internships-grid">
+                    <!-- Injected by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Certifications Section -->
+        <section id="certifications" class="py-32 px-6 bg-white/5 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-4xl font-bold uppercase tracking-tight">
+                        <span id="heading-certifications" class="text-gradient"></span><span class="cursor">|</span>
+                    </h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8" id="certifications-grid">
+                    <!-- Injected by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Work Section -->
+        <section id="projects-section" class="py-32 px-6 bg-bgSecondary/30">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
+                    <h2 class="font-heading text-4xl font-bold uppercase tracking-tight">
+                        <span id="heading-projects" class="text-gradient"></span><span class="cursor">|</span>
+                    </h2>
+                    <a href="https://github.com/2303A52393" target="_blank" class="text-sm font-bold text-accent hover:underline flex items-center gap-2">
+                        VIEW ALL GITHUB <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                    <!-- Injected by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 px-6">
+            <div class="max-w-4xl mx-auto glass-card p-12 md:p-20 rounded-[4rem]">
+                <div class="text-center mb-12">
+                    <h2 class="font-heading text-4xl font-bold mb-4 text-white">Contact <span class="text-accent">Me</span></h2>
+                </div>
+                
+                <form class="space-y-6 mb-12">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Full Name" class="w-full p-4 rounded-2xl" required>
+                        <input type="email" placeholder="Email" class="w-full p-4 rounded-2xl" required>
+                    </div>
+                    <textarea rows="5" placeholder="Message" class="w-full p-4 rounded-2xl" required></textarea>
+                    <button type="submit" class="w-full py-5 bg-accent text-bgPrimary font-black rounded-2xl hover:bg-white transition-all transform active:scale-95 shadow-lg shadow-accent/20">SEND MESSAGE</button>
+                </form>
+
+                <div class="flex justify-center gap-8 border-t border-white/5 pt-12">
+                    <a href="https://www.linkedin.com/in/likitha-pendli-a87583287" target="_blank" class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl text-textMuted hover:text-accent hover:border-accent/40 transition-all">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:likithapendli60@gmail.com" class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl text-textMuted hover:text-accent hover:border-accent/40 transition-all">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/2303A52393" target="_blank" class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl text-textMuted hover:text-accent hover:border-accent/40 transition-all">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 text-center border-t border-white/5">
+        <!-- Copyright text removed -->
+    </footer>
+
+    <script>
+        function createTypingEffect(elementId, textArray, waitTime = 4000) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            let currentTextIndex = 0, charIndex = 0, isDeleting = false;
+            function type() {
+                const currentFullText = textArray[currentTextIndex];
+                if (isDeleting) charIndex--; else charIndex++;
+                element.textContent = currentFullText.substring(0, charIndex);
+                let typingSpeed = isDeleting ? 50 : 100;
+                if (!isDeleting && charIndex === currentFullText.length) {
+                    typingSpeed = waitTime; isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false; currentTextIndex = (currentTextIndex + 1) % textArray.length;
+                    typingSpeed = 500;
+                }
+                setTimeout(type, typingSpeed);
+            }
+            type();
+        }
+
+        // --- DYNAMIC DATA ---
+        
+        const internshipData = [
+            {
+                title: "AI & ML Virtual Internship",
+                desc: "Focused on developing machine learning models using Python and exploring neural network architectures.",
+                link: "https://drive.google.com/file/d/12CdfMzqMepRmA_0hewkTTiU3_irkZUND/view?usp=drive_link",
+                icon: "fa-robot"
+            }
+        ];
+
+        const certificationData = [
+            {
+                title: "CCNA – Introduction to Networks",
+                issuer: "Saylor Academy",
+                date: "Nov 2024",
+                desc: "Proficiency in network architecture, OSI model, IP addressing, and basic security protocols.",
+                link: "https://drive.google.com/file/d/1lSqsOyGkQPoVc34iKI0ybqdB1lo6Uimr/view?usp=drive_link",
+                icon: "fa-network-wired"
+            },
+            {
+                title: "Introduction to Artificial Intelligence",
+                issuer: "OnWingspan",
+                date: "Sep 2024",
+                desc: "Foundation in AI concepts, logic programming, and automated reasoning systems.",
+                link: "https://drive.google.com/file/d/15XRyPlbwmQEbDHcSLbmQWY-JRMxBVYAh/view?usp=drive_link",
+                icon: "fa-brain"
+            }
+        ];
+
+        const projectData = [
+            { title: 'Bank Marketing Intelligence', link: 'https://github.com/2303A52393/PROJECT-Bank-Marketing-', tags: ['ML', 'Data Science'], icon: '<i class="fas fa-university"></i>' },
+            { title: 'Heart Disease Prediction', link: 'https://github.com/2303A52393/PROJECT-Heart-Disease-Prediction', tags: ['Deep Learning', 'HealthTech'], icon: '<i class="fas fa-heartbeat"></i>' },
+            { title: 'Teenage Phone Addiction', link: 'https://github.com/2303A52393/PROJECT-Teen-age-phone-addiction', tags: ['Analysis', 'Behavioral'], icon: '<i class="fas fa-mobile-alt"></i>' }
+        ];
+
+        // --- RENDERING FUNCTIONS ---
+
+        function renderInternships() {
+            const grid = document.getElementById('internships-grid');
+            if(!grid) return;
+            grid.innerHTML = internshipData.map(item => `
+                <div class="glass-card p-10 rounded-[2.5rem] group hover:border-accent/40">
+                    <div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fas ${item.icon}"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 leading-tight">${item.title}</h3>
+                    <p class="text-textMuted mb-8 text-sm leading-relaxed">${item.desc}</p>
+                    <a href="${item.link}" target="_blank" class="px-6 py-3 bg-white/5 border border-accent/30 rounded-xl font-bold text-xs uppercase tracking-widest text-white hover:bg-accent hover:text-bgPrimary transition-all inline-block">View Proof</a>
+                </div>
+            `).join('');
+        }
+
+        function renderCertifications() {
+            const grid = document.getElementById('certifications-grid');
+            if(!grid) return;
+            grid.innerHTML = certificationData.map(item => `
+                <div class="glass-card p-10 rounded-[2.5rem] group hover:border-accent/40">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fas ${item.icon}"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-accent uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full border border-accent/20">${item.issuer}</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2 leading-tight">${item.title}</h3>
+                    <p class="text-accent text-sm font-semibold mb-4">${item.date}</p>
+                    <p class="text-textMuted mb-8 text-sm leading-relaxed">${item.desc}</p>
+                    <a href="${item.link}" target="_blank" class="px-6 py-3 bg-white/5 border border-accent/30 rounded-xl font-bold text-xs uppercase tracking-widest text-white hover:bg-accent hover:text-bgPrimary transition-all inline-block">Verify Credential</a>
+                </div>
+            `).join('');
+        }
+
+        function renderProjects() {
+            const grid = document.getElementById('projects-grid');
+            if(!grid) return;
+            grid.innerHTML = projectData.map(p => `
+                <div class="glass-card p-10 rounded-[2.5rem] group">
+                    <div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl mb-8 group-hover:scale-110 transition-transform">
+                        ${p.icon}
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 leading-tight">${p.title}</h3>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        ${p.tags.map(t => `<span class="text-[9px] bg-white/5 border border-white/5 px-3 py-1 rounded-full text-textMuted uppercase font-bold tracking-widest">${t}</span>`).join('')}
+                    </div>
+                    <a href="${p.link}" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-white group-hover:text-accent transition-colors uppercase tracking-[0.2em]">Source Code &#10230;</a>
+                </div>
+            `).join('');
+        }
+
+        // --- INITIALIZATION ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createTypingEffect('dynamic-greeting', ["Hi There!"], 2000);
+            createTypingEffect('dynamic-name', ["I'm Pendli Likitha"], 5000);
+            createTypingEffect('heading-about', ["About Me"], 3000);
+            createTypingEffect('heading-skills', ["Technical Skills"], 3500);
+            createTypingEffect('heading-internships', ["Internships"], 3500);
+            createTypingEffect('heading-certifications', ["Certifications"], 3500);
+            createTypingEffect('heading-projects', ["Project Work"], 4000);
+            
+            renderInternships();
+            renderCertifications();
+            renderProjects();
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('bg-bgPrimary/80', 'backdrop-blur-xl', 'h-16');
+            else nav.classList.remove('bg-bgPrimary/80', 'backdrop-blur-xl', 'h-16');
+        });
+    </script>
+</body>
+</html>
