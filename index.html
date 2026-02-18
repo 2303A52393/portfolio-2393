@@ -171,9 +171,17 @@
                     </div>
                 </div>
 
+                <!-- Profile Image Container -->
                 <div class="relative flex justify-center mt-6 mb-10">
-                    <div class="relative w-48 h-48 md:w-64 md:h-64 profile-blob bg-accent/20 border-2 border-accent/40 animate-float shadow-2xl shadow-accent/20 overflow-hidden">
-                         <img src="assets/img/likki.jpg.pdf" alt="Pendli Likitha">
+                    <div class="relative w-48 h-48 md:w-64 md:h-64 profile-blob bg-accent/20 border-2 border-accent/40 animate-float shadow-2xl shadow-accent/20 overflow-hidden group">
+                        <!-- REPLACE src="assets/img/likitha.jpg" with your actual image file path -->
+                        <img 
+                            id="profile-img"
+                            src="assets/img/likki.jpg" 
+                            alt="Pendli Likitha" 
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
+                            onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400'; this.style.grayscale='0';"
+                        >
                     </div>
                 </div>
 
@@ -400,7 +408,7 @@
     </main>
 
     <footer class="py-12 text-center border-t border-white/5">
-        <!-- Copyright text removed -->
+        <p class="text-textMuted text-sm font-medium">Designed with <i class="fas fa-heart text-accent mx-1"></i> by Pendli Likitha</p>
     </footer>
 
     <script>
@@ -537,6 +545,3 @@
     </script>
 </body>
 </html>
-
-
-
