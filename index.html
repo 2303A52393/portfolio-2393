@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendli Likitha | AI & ML Engineer</title>
-
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a9cdbedf57.js" crossorigin="anonymous"></script>
 
@@ -34,91 +34,175 @@
             }
         }
     </script>
-
     <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c084fc; }
+
         body {
             background: radial-gradient(circle at top right, #1e1b4b, #020617 40%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            filter: blur(100px);
+            animation: mesh 20s ease infinite;
+        }
+
+        @keyframes mesh {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
 
         .glass-card {
             background: rgba(15, 23, 42, 0.4);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .glass-card:hover {
-            transform: translateY(-5px);
             border-color: rgba(192, 132, 252, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -20px rgba(192, 132, 252, 0.3);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #c084fc;
+            margin-left: 4px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #f8fafc, #c084fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
 
         .profile-blob {
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: blob 8s infinite ease-in-out;
             overflow: hidden;
+            animation: blob-anim 8s ease-in-out infinite;
         }
 
-        @keyframes blob {
-            50% {
-                border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
-            }
+        @keyframes blob-anim {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
         }
 
-        .cursor {
-            width: 3px;
-            background: #c084fc;
-            display: inline-block;
-            animation: blink 1s infinite;
+        input, textarea {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            transition: all 0.3s ease;
         }
 
-        @keyframes blink {
-            50% { opacity: 0; }
+        input:focus, textarea:focus {
+            border-color: #c084fc !important;
+            outline: none;
+            background: rgba(255, 255, 255, 0.07) !important;
         }
     </style>
 </head>
+<body class="bg-bgPrimary text-textMain antialiased font-sans">
+    <div class="bg-mesh"></div>
 
-<body class="text-textMain font-sans">
-
-<!-- HERO SECTION -->
-<section class="min-h-screen flex items-center justify-center text-center px-6">
-    <div>
-
-        <h1 class="font-heading text-5xl md:text-7xl font-extrabold mb-6">
-            Hi There! <br>
-            <span class="text-gradient">I'm Pendli Likitha</span><span class="cursor"></span>
-        </h1>
-
-        <!-- PROFILE IMAGE (LOCAL FILE) -->
-        <div class="flex justify-center my-10">
-            <div class="w-52 h-52 md:w-64 md:h-64 profile-blob border-4 border-accent shadow-xl">
-                <!-- 👇 YOUR IMAGE FILE -->
-                <img src="likki.jpg" alt=""
-                     class="w-full h-full object-cover">
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="font-heading text-xl md:text-2xl font-black uppercase tracking-[0.15em] cursor-pointer group flex items-center gap-2" onclick="window.scrollTo(0,0)">
+                <span class="text-accent group-hover:text-white transition-all duration-300 transform group-hover:scale-110">Portfolio</span>
             </div>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Home</a>
+                <a href="#about" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">About</a>
+                <a href="#skills" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Skills</a>
+                <a href="#internships" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Internships</a>
+                <a href="#certifications" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Certificates</a>
+                <a href="#projects-section" class="text-xs font-bold uppercase tracking-widest text-textMuted hover:text-white transition-colors">Projects</a>
+                <a href="#contact" class="px-5 py-2.5 bg-accent text-bgPrimary rounded-full font-bold text-xs uppercase tracking-wider hover:scale-105 transition-all">Contact</a>
+            </nav>
         </div>
+    </header>
 
-        <p class="text-textMuted text-lg max-w-2xl mx-auto">
-            A <span class="text-white font-semibold">Computer Science student</span>
-            specializing in <span class="text-white font-semibold">AI & ML</span>,
-            passionate about Machine Learning, Deep Learning and Full-Stack Development.
-        </p>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center relative px-6 pt-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full flex flex-col items-center text-center">
+                <div class="max-w-4xl">
+                    <div class="min-h-[140px] md:min-h-[180px]">
+                        <h1 class="font-heading text-4xl md:text-7xl font-extrabold leading-[1.1]">
+                            <span id="dynamic-greeting" class="text-white"></span><br>
+                            <span id="dynamic-name" class="text-gradient leading-relaxed"></span><span class="cursor">|</span>
+                        </h1>
+                    </div>
+                </div>
 
-        <div class="flex justify-center gap-6 mt-8">
-            <a href="https://github.com/2303A52393" target="_blank"
-               class="px-6 py-3 bg-accent text-bgPrimary rounded-xl font-bold">
-                GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/likitha-pendli-a87583287" target="_blank"
-               class="px-6 py-3 border border-accent rounded-xl font-bold">
-                LinkedIn
-            </a>
-        </div>
+                <div class="relative flex justify-center mt-6 mb-10">
+                    <div class="relative w-48 h-48 md:w-64 md:h-64 profile-blob bg-accent/20 border-2 border-accent/40 animate-float shadow-2xl shadow-accent/20 overflow-hidden">
+                        <img src="likki.jpg" class="w-full h-full object-cover">
+                    </div>
+                </div>
 
-    </div>
-</section>
+                <div class="max-w-2xl mb-12">
+                    <p class="text-textMuted text-lg md:text-xl leading-relaxed font-light">
+                        A <span class="text-white font-medium">Computer Science student</span> specializing in Artificial Intelligence and Machine Learning, with interests in <span class="text-white font-medium">Machine Learning, Deep Learning, and Full-Stack Web Development</span>.
+                    </p>
+                </div>
 
-</body>
-</html>
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <a href="#about" class="group relative px-10 py-4 bg-white/5 border border-accent/30 rounded-2xl font-bold text-white overflow-hidden transition-all hover:border-accent">
+                        <span class="relative z-10 flex items-center gap-2">
+                            Explore Me <i class="fas fa-arrow-right text-accent group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                        <div class="absolute inset-0 bg-accent/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a>
+
+                    <div class="flex items-center gap-6">
+                        <a href="https://github.com/2303A52393" target="_blank" class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl text-textMuted hover:text-accent hover:border-accent/40 hover:-translate-y-1 transition-all duration-300" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/likitha-pendli-a87583287" target="_blank" class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl text-textMuted hover:text-accent hover:border-accent/40 hover:-translate-y-1 transition-all duration-300" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section id="about" class="py-24 px-6 border-t border-white/5">
             <div class="max-w-7xl mx-auto">
@@ -453,5 +537,3 @@
     </script>
 </body>
 </html>
-
-
